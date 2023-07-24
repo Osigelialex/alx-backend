@@ -49,14 +49,14 @@ class Server:
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """perfoms hypermedia pagination on dataset"""
         requested_page = self.get_page(page, page_size)
-        page_count = math.floor(19419 / page_size)
+        page_count = int(19419 / page_size)
 
         # check if page is valid
         if page > page_count:
             page_size = 0
 
         next_page = page + 1 if page < page_count else None
-        prev_page = page - 1 if page > 0 else None
+        prev_page = page - 1 if page > 1 else None
 
         return {
             'page_size': page_size,
