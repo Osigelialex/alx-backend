@@ -2,7 +2,7 @@
 """A module for implementing lru caching
 """
 from base_caching import BaseCaching
-from typing import Union
+from typing import Union, Dict
 
 
 class LRUCache(BaseCaching):
@@ -13,7 +13,7 @@ class LRUCache(BaseCaching):
         """
         super().__init__()
         # create age bits to track least recently used item
-        self.age_bit = {}
+        self.age_bit: Dict = {}
 
     def put(self, key: str, item: str) -> None:
         """sets key in cache
@@ -35,7 +35,7 @@ class LRUCache(BaseCaching):
         if key not in self.age_bit:
             self.age_bit[key] = 0
         else:
-            self.age_bit[key] = self.age_bit.get(key) + 1
+            self.age_bit[key] = self.age_bit[key] + 1
 
     def get(self, key: str) -> Union[str, None]:
         """retrieves item from cache
@@ -44,5 +44,5 @@ class LRUCache(BaseCaching):
             return None
 
         # update age bit count for key
-        self.age_bit[key] = self.age_bit.get(key) + 1
+        self.age_bit[key] = self.age_bit[key] + 1
         return self.cache_data[key]
