@@ -20,7 +20,7 @@ class LIFOCache(BaseCaching):
             return
 
         # discard last item if cache is full
-        if len(self.cache_data) > super().MAX_ITEMS:
+        if len(self.cache_data) == super().MAX_ITEMS:
             index = list(self.cache_data)[-1]
             self.cache_data.pop(index)
             print("DISCARD: {}".format(index))
