@@ -23,8 +23,8 @@ class MRUCache(BaseCaching):
 
         # remove least recently used item
         if len(self.cache_data) == super().MAX_ITEMS:
-            # get least recently used item
-            index = max(self.age_bit, key=lambda k: self.age_bit[k])
+            # get most recently used item
+            index = max(self.age_bit, key=self.age_bit.get)
             del self.cache_data[index]
             del self.age_bit[index]
             print("DISCARD: {}".format(index))
