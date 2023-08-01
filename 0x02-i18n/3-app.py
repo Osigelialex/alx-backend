@@ -27,8 +27,8 @@ def get_locale() -> Any:
 def index() -> Any:
     """renders home page"""
     return render_template('0-index.html',
-            home_title='home_title',
-            home_header='home_header')
+            home_title=getattr('home_title'),
+            home_header=getattr('home_header'))
 
 
 if __name__ == '__main__':
