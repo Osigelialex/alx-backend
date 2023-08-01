@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """simple flask module"""
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 from typing import Any
 
 
@@ -26,7 +26,9 @@ def get_locale() -> Any:
 @app.route('/', strict_slashes=False)
 def index() -> Any:
     """renders home page"""
-    return render_template('0-index.html')
+    return render_template('0-index.html',
+            home_title='home_title',
+            home_header='home_header')
 
 
 if __name__ == '__main__':
